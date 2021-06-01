@@ -1,0 +1,14 @@
+.main-content{
+  padding-top:116px;
+  min-height:100vh
+}
+
+.section-content-p30{
+  padding:0 30px
+}
+.product-box img {
+  width: 150px;
+}
+.product-box{
+  margin-bottom:60px
+}
