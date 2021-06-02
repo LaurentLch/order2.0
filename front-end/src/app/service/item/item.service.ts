@@ -1,8 +1,7 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {Item} from "../../model/item/item";
-import {map} from "rxjs/operators";
+import {Item} from "../../model/item";
 
 @Injectable({
   providedIn: 'root'
@@ -17,8 +16,14 @@ export class ItemService {
   // call at http://localhost:9000/items
   getItemList(): Observable <Item[]> {
     const url = `${this.backendUrl}`;
-    return this.httpClient.get<Item[]>(url).pipe(map(response => response));
+    return this.httpClient.get<Item[]>(url);
   }
 
+  // call at http://localhost:9000/items/:id
+  getItem(theItemId: number): Observable<Item> {
+    //need to build URL based on item id
+    const url = `${this.backendUrl}/${theItemId}`;
+    return this.httpClient.get<Item>(url);
+  }
 
 }

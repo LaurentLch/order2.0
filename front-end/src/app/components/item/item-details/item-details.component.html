@@ -1,0 +1,82 @@
+<div class="detail-section">
+  <div class="container-fluid text-center">
+
+    <div class="row">
+      <h6 class="display-6">Item - {{item.id}} </h6>
+    </div>
+
+    <div class="row mt-5">
+      <div class="img-responsive">
+        <img  class="img-fluid" src="/assets/images/placeholder.png" alt="placeholder">
+      </div>
+    </div>
+
+    <div class="row mt-5">
+
+      <div class="row">
+        <h6 class="display-6">Name:</h6>
+        <div class="card">
+          <div class="card-body">
+            <h4>{{item.name}}</h4>
+          </div>
+        </div>
+      </div>
+      <br>
+
+      <div class="row mt-5">
+        <h6 class="display-6">Description</h6>
+        <div class="card">
+          <div class="card-body">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aliquam amet commodi distinctio dolore
+              ducimus facilis natus non odio soluta suscipit, tempora, unde? Dolor dolore, doloremque error fugiat
+              minima modi!</p>
+            <p>A ab animi dicta, dolor eaque esse ex excepturi hic mollitia nam neque nulla odit, quas, qui quia
+              quisquam reiciendis saepe tempore.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mt-5">
+        <div class="col-6">
+          <div class="row">
+            <div>
+              <h6 class="display-6">Price:</h6>
+            </div>
+          </div>
+          <div class="row">
+            <div class="card">
+              <div class="card-body">
+                {{item.price | currency : 'USD' }}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6">
+          <div class="row">
+            <div>
+              <h6 class="display-6">Amount in Stock:</h6>
+            </div>
+          </div>
+          <div class="row">
+            <div class="card">
+              <div class="card-body">
+                {{item.amountOfStock }}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <div class="btn btn-primary m-lg-5 px-4"> Edit</div>
+          </div>
+          <div class="col-6">
+            <a routerLink="/items">
+              <div class="btn btn-outline-primary px-4 m-lg-5"> Back</div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

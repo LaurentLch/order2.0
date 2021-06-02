@@ -5,3 +5,4 @@ export interface Item {
   amountOfStock: number;
   stockUrgency: string;
 }
+

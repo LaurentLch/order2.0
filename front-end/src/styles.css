@@ -6,9 +6,11 @@
 .section-content-p30{
   padding:0 30px
 }
-.product-box img {
-  width: 150px;
-}
+
 .product-box{
   margin-bottom:60px
+}
+
+.detail-section{
+  margin-top:60px
 }
