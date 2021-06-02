@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {Item} from "../model/item";
+import {Item} from "../../model/item/item";
 import {map} from "rxjs/operators";
 
 @Injectable({
@@ -19,4 +19,6 @@ export class ItemService {
     const url = `${this.backendUrl}`;
     return this.httpClient.get<Item[]>(url).pipe(map(response => response));
   }
+
+
 }

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {ItemService} from "../../service/item.service";
-import {Item} from "../../model/item";
+import {ItemService} from "../../../service/item/item.service";
+import {Item} from "../../../model/item/item";
 
 @Component({
   selector: 'app-item',
@@ -10,7 +10,8 @@ import {Item} from "../../model/item";
 export class ItemListComponent implements OnInit {
 
   // @ts-ignore
-  items: Item[];
+  items : Item[];
+  searchText: string = '';
 
   constructor(private itemService: ItemService) {
   }
