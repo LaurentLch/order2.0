@@ -16,15 +16,13 @@ export class CustomerListComponent implements OnInit {
   searchText: string = '';
 
   constructor(private customerService: CustomerService) {
-
   }
-
 
   ngOnInit(): void {
-    this.listCustomer();
+    this.listCustomers();
   }
 
-  listCustomer() {
+  listCustomers() {
     this.customerService.getCustomerList().subscribe(data => {
       this.customers = data;
     })

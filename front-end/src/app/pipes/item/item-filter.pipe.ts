@@ -12,7 +12,7 @@ export class ItemFilterPipe implements PipeTransform {
       return [];
     }
 
-    //if no searchtext -> return all items
+    //if no search text -> return all items
     if(!searchText){
       return items;
     }

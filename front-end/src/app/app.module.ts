@@ -11,6 +11,7 @@ import {FormsModule} from "@angular/forms";
 import { ItemFilterPipe } from './pipes/item/item-filter.pipe';
 import { ItemDetailsComponent } from './components/item/item-details/item-details.component';
 import { CustomerListComponent } from './components/customer/customer-list/customer-list.component';
+import { CustomerFilterPipe } from './pipes/customer/customer-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { CustomerListComponent } from './components/customer/customer-list/custo
     ItemListComponent,
     ItemFilterPipe,
     ItemDetailsComponent,
-    CustomerListComponent
+    CustomerListComponent,
+    CustomerFilterPipe
   ],
   imports: [
     BrowserModule,
