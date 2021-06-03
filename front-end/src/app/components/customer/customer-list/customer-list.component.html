@@ -29,10 +29,15 @@
 
     <tbody>
     <tr *ngFor="let customer of customers | customerFilter: searchText">
-      <td class="align-middle">{{ customer.id}}</td>
+
+      <td class="align-middle"><a style="text-decoration: none" routerLink="/customers/{{customer.id}}">{{customer.id}}</a></td>
       <td class="align-middle">{{ customer.firstname }}</td>
       <td class="align-middle">{{ customer.lastname}}</td>
-      <td class="align-middle"> <button class="m-1 btn btn-outline-primary">View</button><button class="btn btn-primary">Edit</button></td>
+      <td class="align-middle">
+        <a style="text-decoration: none" routerLink="/customers/{{customer.id}}">
+          <button class="m-1 btn btn-outline-primary">View</button>
+        </a>
+        <button class="btn btn-primary">Edit</button></td>
     </tr>
 
     </tbody>

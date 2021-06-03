@@ -1,52 +1,60 @@
-    <div class="container mt-5">
-      <div class="row">
-        <div class="col-8">
-          <h1 class="display-4">Item Overview</h1>
-        </div>
-        <div class="col-4">
-            <div class="card">
-              <div class="form-group">
 
-                <input type="text" class="form-control" id="search-text" aria-describedby="search-text"
-                       [(ngModel)]="searchText" placeholder="Filter by name..."
-                       autofocus>
+  <div class="row">
+    <div class="col-6">
+      <h1 class="display-4">Item Overview</h1>
 
-              </div>
-
-        </div>
+    </div>
+    <div class="col-6">
+      <div class="card">
+        <div class="form-group">
+          <input type="text" class="form-control" id="search-text" aria-describedby="search-text"
+                 [(ngModel)]="searchText" placeholder="Filter by name..."
+                 autofocus>
         </div>
       </div>
     </div>
-    <hr>
-    <div class="container-fluid">
-      <div class="row">
-        <!-- loop over the collection of items-->
-        <div *ngFor="let item of items | itemFilter: searchText" class="col-md-4">
-          <div class="item-box text-center">
-            <div class="container">
-              <div class="row">
-                <a routerLink="/item/{{item.id}} " class="text-decoration-none text-black-50 ">
-                  <h4>{{item.name}}</h4>
-                </a>
-              </div>
-              <div class="row">
-                <a routerLink="/item/{{item.id}}"><img class="img-fluid" src="../../../../assets/images/placeholder.png" alt="placeholder"></a>
-              </div>
-              <div class="row">
-                <div class="col-7">
-                  {{item.price |currency:'USD'}}
-                </div>
-                <div class="col-4" *ngIf="item.stockUrgency =='STOCK_LOW'">Stock Low <i style="color:red"
-                                                                                        class="fas fa-circle"></i>
-                </div>
-                <div class="col-4" *ngIf="item.stockUrgency =='STOCK_HIGH'">Stock High <i style="color:green"
-                                                                                          class="fas fa-circle"></i>
-                </div>
-              </div>
+  </div>
+
+<hr>
+<div class="container-fluid">
+  <div class="row">
+    <!-- loop over the collection of items-->
+    <div *ngFor="let item of items | itemFilter: searchText" class="col-md-4">
+      <div class="item-box text-center">
+        <div class="container">
+          <div class="row">
+            <a routerLink="/items/{{item.id}} " class="text-decoration-none text-black-50 ">
+              <h4>{{item.name}}</h4>
+            </a>
+          </div>
+          <div class="row">
+            <a routerLink="/items/{{item.id}}"><img class="img-fluid" src="../../../../assets/images/placeholder.png"
+                                                    alt="placeholder"></a>
+          </div>
+          <div class="row">
+            <div class="col-7">
+              {{item.price |currency:'USD'}}
+            </div>
+            <div class="col-4" *ngIf="item.stockUrgency =='STOCK_LOW'">Stock Low <i style="color:red"
+                                                                                    class="fas fa-circle"></i>
+            </div>
+            <div class="col-4" *ngIf="item.stockUrgency =='STOCK_HIGH'">Stock High <i style="color:green"
+                                                                                      class="fas fa-circle"></i>
             </div>
           </div>
-          <br>
         </div>
       </div>
+      <br>
     </div>
+  </div>
+  <button type="button"  class="btn btn-outline-success" routerLink="/item-create">
+    <i class="fas fa-plus-circle">  </i> Add New Item
+  </button>
+</div>
+
+
+
+
+
+
 

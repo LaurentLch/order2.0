@@ -4,5 +4,6 @@ export interface Item {
   price: number;
   amountOfStock: number;
   stockUrgency: string;
+  description: string;
 }
 

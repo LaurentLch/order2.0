@@ -32,7 +32,7 @@ export class ItemDetailsComponent implements OnInit {
    getItemDetails() {
     //get the id param string and convert string to a number using the + symbol
 
-     this.itemService.getItem(this.id).subscribe(
+     this.itemService.getItemById(this.id).subscribe(
        data => {
          this.item = data;
        }

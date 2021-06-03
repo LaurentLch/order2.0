@@ -7,11 +7,13 @@ import { HeaderComponent } from './components/navigation/header/header.component
 import { FooterComponent } from './components/navigation/footer/footer.component';
 import { ItemListComponent } from './components/item/item-list/item-list.component';
 import {HttpClientModule} from "@angular/common/http";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { ItemFilterPipe } from './pipes/item/item-filter.pipe';
 import { ItemDetailsComponent } from './components/item/item-details/item-details.component';
 import { CustomerListComponent } from './components/customer/customer-list/customer-list.component';
 import { CustomerFilterPipe } from './pipes/customer/customer-filter.pipe';
+import { CustomerDetailsComponent } from './components/customer/customer-details/customer-details.component';
+import { ItemCreateComponent } from './components/item/item-create/item-create.component';
 
 @NgModule({
   declarations: [
@@ -22,13 +24,16 @@ import { CustomerFilterPipe } from './pipes/customer/customer-filter.pipe';
     ItemFilterPipe,
     ItemDetailsComponent,
     CustomerListComponent,
-    CustomerFilterPipe
+    CustomerFilterPipe,
+    CustomerDetailsComponent,
+    ItemCreateComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

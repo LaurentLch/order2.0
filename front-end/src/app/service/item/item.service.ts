@@ -2,28 +2,28 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Item} from "../../model/item";
+import {map} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ItemService {
 
-  private backendUrl = 'http://localhost:9000/items'
+  url: string;
 
   constructor(private httpClient: HttpClient) {
+    this.url = 'http://localhost:9000/items';
   }
 
-  // call at http://localhost:9000/items
-  getItemList(): Observable <Item[]> {
-    const url = `${this.backendUrl}`;
-    return this.httpClient.get<Item[]>(url);
+  getItems(): Observable<Item[]> {
+    return this.httpClient.get<Item[]>(this.url).pipe(map(response => response));
   }
 
-  // call at http://localhost:9000/items/:id
-  getItem(theItemId: number): Observable<Item> {
-    //need to build URL based on item id
-    const url = `${this.backendUrl}/${theItemId}`;
-    return this.httpClient.get<Item>(url);
+  getItemById(id:number): Observable<Item> {
+    return this.httpClient.get<Item>(this.url + '/' + id);
   }
 
+  addItem(item: Item){
+    return this.httpClient.post<Item> (this.url, item);
+  }
 }
