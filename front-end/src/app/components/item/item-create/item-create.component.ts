@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Item} from "../../../model/item";
 import {ItemService} from "../../../service/item/item.service";
-import {FormBuilder} from "@angular/forms";
+import {FormBuilder, Validators} from "@angular/forms";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-item-create',
@@ -12,14 +13,17 @@ export class ItemCreateComponent implements OnInit {
 
   items: Item[] = [];
 
-  addItemForm = this.formBuilder.group({
-    name: '',
-    description: '',
-    price: '',
-    amountOfStock: ''
+  addItemForm = this._formBuilder.group({
+    name: ['', Validators.required],
+    description: ['', [Validators.required,Validators.maxLength(255)]],
+    price: ['', [Validators.required,Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
+    amountOfStock: ['', [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/)]]
   });
 
-  constructor(private itemService: ItemService, private formBuilder: FormBuilder) { }
+  constructor(
+    private itemService: ItemService,
+    private _formBuilder: FormBuilder,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.getItems();
@@ -33,10 +37,26 @@ export class ItemCreateComponent implements OnInit {
     this.itemService.addItem(this.addItemForm.value).subscribe(() => this.getItems());
   }
 
+  get name(): any{
+    return this.addItemForm.get('name')
+  }
+
+  get description():any{
+    return this.addItemForm.get('description')
+  }
+
+  get price(): any{
+    return this.addItemForm.get('price')
+  }
+
+  get amountOfStock(): any{
+    return this.addItemForm.get('amountOfStock')
+  }
 
   onSubmit(): void {
     this.addItem();
     this.addItemForm.reset();
+    this.router.navigateByUrl('/items');
   }
 
   displayMessage() {

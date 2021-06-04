@@ -7,27 +7,40 @@
     </div>
 
     <div id="addItemForm">
+
       <form [formGroup]="addItemForm" (ngSubmit)="onSubmit()">
 
 
+        <!--        NAME-->
         <div class="row mt-5">
           <div class="form-group">
-            <h6 class="display-6">Name:</h6>
-            <input class="form-control" type="text" formControlName="name"
+            <label class="display-6" for="name">Name:</label>
+            <input class="form-control"
+                   type="text"
+                   id="name"
+                   formControlName="name"
                    placeholder="Enter the item's name">
+            <div *ngIf="name.errors?.required">
+              Name is required
+            </div>
           </div>
         </div>
         <br>
 
+        <!--        DESCRIPTION-->
         <div class="row mt-5">
           <div class="form-group">
             <h6 class="display-6">Description:</h6>
             <input class="form-control" type="text" formControlName="description"
                    placeholder="Enter the item's description">
+            <div *ngIf="description.errors?.required">
+            Description is required
+          </div>
           </div>
         </div>
         <br>
 
+        <!--        PRICE-->
         <div class="row mt-5">
           <div class="col-6">
             <div class="row mt-5">
@@ -35,33 +48,47 @@
                 <h6 class="display-6">Price:</h6>
                 <input class="form-control" type="number" formControlName="price"
                        placeholder="Enter the item's price">
+                <div *ngIf="price.errors?.required || price.errors?.pattern">
+                Price is required
+                </div>
               </div>
             </div>
           </div>
+
+          <!--          AMOUNT OF STOCK-->
           <div class="col-6">
             <div class="row mt-5">
               <div class="form-group">
                 <h6 class="display-6">Amount of Stock:</h6>
                 <input class="form-control" type="number" formControlName="amountOfStock"
                        placeholder="Enter the item's stock">
+                <div *ngIf="amountOfStock.errors?.required || amountOfStock.errors?.pattern">
+                  Amount of stock is required
+                </div>
               </div>
             </div>
           </div>
         </div>
-    <div class="row">
-      <div class="col-6">
-        <a routerLink="/items">
-          <button class="btn btn-outline-primary px-4 m-lg-5">
-            Back
-          </button>
-        </a>
-      </div>
-      <div class="col-6">
-        <button class="btn btn-primary m-lg-5 px-4" (click)="displayMessage()"  type="submit">
-          Save
-        </button>
-      </div>
-    </div>
+
+        <!--        BUTTONS-->
+        <div class="row mt-5">
+
+          <div class="col-6">
+            <a routerLink="/items">
+              <button class="btn btn-outline-primary px-4 m-lg-5">
+                Back
+              </button>
+            </a>
+          </div>
+
+          <div class="col-6">
+            <button class="btn btn-primary m-lg-5 px-4" (click)="displayMessage()" type="submit" [disabled]="!addItemForm.valid">
+              Save
+            </button>
+          </div>
+        </div>
+
+
       </form>
     </div>
   </div>
