@@ -6,7 +6,7 @@
       <hr>
     </div>
 
-    <div id="addItemForm">
+    <div id="addItemForm" >
 
       <form [formGroup]="addItemForm" (ngSubmit)="onSubmit()">
 
@@ -31,8 +31,17 @@
         <div class="row mt-5">
           <div class="form-group">
             <h6 class="display-6">Description:</h6>
-            <input class="form-control" type="text" formControlName="description"
-                   placeholder="Enter the item's description">
+            <input class="form-control"
+                   type="text"
+                   formControlName="description"
+                   placeholder="Enter the item's description"
+                   [(ngModel)] = "interaction.textValue"
+                   (ngModelChange)= "onModelChange($event)"
+                   maxlength="255"
+            >
+            <span class="fa-pull-right">
+              {{255 - numberOfCharacters}}/{{maxAmountOfCharacters}}
+            </span>
             <div *ngIf="description.errors?.required">
             Description is required
           </div>
@@ -46,8 +55,11 @@
             <div class="row mt-5">
               <div class="form-group">
                 <h6 class="display-6">Price:</h6>
-                <input class="form-control" type="number" formControlName="price"
-                       placeholder="Enter the item's price">
+                <div class="input-group flex-nowrap">
+                  <span class="input-group-text" id="addon-wrapping">$</span>
+                  <input class="form-control" type="number" formControlName="price"
+                         placeholder="Enter the item's price">
+                </div>
                 <div *ngIf="price.errors?.required || price.errors?.pattern">
                 Price is required
                 </div>
@@ -76,7 +88,7 @@
           <div class="col-6">
             <a routerLink="/items">
               <button class="btn btn-outline-primary px-4 m-lg-5">
-                Back
+                Cancel
               </button>
             </a>
           </div>

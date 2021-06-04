@@ -20,6 +20,14 @@ export class ItemCreateComponent implements OnInit {
     amountOfStock: ['', [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/)]]
   });
 
+  // CHARACTER COUNTER FIELDS
+  numberOfCharacters: number = 0;
+  maxAmountOfCharacters: number = 255;
+  interaction = {
+    textValue: ''
+  };
+
+
   constructor(
     private itemService: ItemService,
     private _formBuilder: FormBuilder,
@@ -61,5 +69,9 @@ export class ItemCreateComponent implements OnInit {
 
   displayMessage() {
     console.log('item created successfully')
+  }
+
+  onModelChange(textValue: string) {
+    this.numberOfCharacters = textValue.length;
   }
 }

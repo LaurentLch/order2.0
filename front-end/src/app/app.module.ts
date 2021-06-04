@@ -14,6 +14,7 @@ import { CustomerListComponent } from './components/customer/customer-list/custo
 import { CustomerFilterPipe } from './pipes/customer/customer-filter.pipe';
 import { CustomerDetailsComponent } from './components/customer/customer-details/customer-details.component';
 import { ItemCreateComponent } from './components/item/item-create/item-create.component';
+import { CustomerCreateComponent } from './components/customer/customer-create/customer-create.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ItemCreateComponent } from './components/item/item-create/item-create.c
     CustomerListComponent,
     CustomerFilterPipe,
     CustomerDetailsComponent,
-    ItemCreateComponent
+    ItemCreateComponent,
+    CustomerCreateComponent
   ],
   imports: [
     BrowserModule,
